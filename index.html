@@ -899,6 +899,15 @@
             }).format(amount);
         }
 
+        function getOrdinalYear(year) {
+            const ordinals = {
+                1: "1st",
+                2: "2nd", 
+                3: "3rd"
+            };
+            return ordinals[year] || year;
+        }
+
         function generateModalFeeDetails(year, course) {
             const fees = feeStructure[year][course];
             let html = '';
@@ -923,7 +932,7 @@
             const modalContent = document.getElementById('modalContent');
             
             // Set modal content
-            modalTitle.textContent = `Year ${year} Fee Details`;
+            modalTitle.textContent = `${getOrdinalYear(year)} Year Fee Details`;
             modalCourse.textContent = `${courseNames[course]} (${course.toUpperCase()})`;
             modalContent.innerHTML = generateModalFeeDetails(year, course);
             
