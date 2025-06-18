@@ -265,11 +265,26 @@
             padding: 20px;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
+            position: relative;
         }
 
         .year-section:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
+        }
+
+        /* Mobile scroll indicator */
+        @media (max-width: 768px) {
+            .year-section::after {
+                content: '← Swipe to see more courses →';
+                position: absolute;
+                bottom: 5px;
+                right: 10px;
+                font-size: 0.7rem;
+                color: var(--text-light);
+                pointer-events: none;
+                opacity: 0.7;
+            }
         }
 
         .year-title {
@@ -288,6 +303,39 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 10px;
+        }
+
+        /* Mobile horizontal scrolling override */
+        @media (max-width: 768px) {
+            .course-grid {
+                display: flex !important;
+                grid-template-columns: none !important;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 15px;
+                padding: 10px 5px 15px 5px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+                scrollbar-color: var(--primary-light) rgba(0, 0, 0, 0.1);
+            }
+
+            .course-grid::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .course-grid::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 4px;
+            }
+
+            .course-grid::-webkit-scrollbar-thumb {
+                background: var(--primary-light);
+                border-radius: 4px;
+            }
+
+            .course-grid::-webkit-scrollbar-thumb:hover {
+                background: var(--primary);
+            }
         }
 
         .course-card {
