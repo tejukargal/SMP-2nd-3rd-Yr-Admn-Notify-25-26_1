@@ -71,8 +71,8 @@
         }
 
         .logo-container {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--accent), var(--success));
             border-radius: 50%;
             display: flex;
@@ -89,7 +89,7 @@
         }
 
         .logo-container i {
-            font-size: 36px;
+            font-size: 28px;
             color: white;
         }
 
@@ -325,8 +325,6 @@
             transform: scale(1.05);
             border-color: var(--primary);
             box-shadow: var(--shadow-md);
-            z-index: 20;
-            position: relative;
         }
 
         .course-name {
@@ -338,49 +336,36 @@
 
         .course-fees {
             display: none;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--bg-secondary);
-            border-radius: 10px;
-            padding: 12px;
-            box-shadow: var(--shadow-lg);
-            z-index: 30;
-            min-width: 200px;
-            border: 2px solid var(--primary);
-            animation: slideUp 0.3s ease-out;
-            margin-top: 5px;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
+            margin-top: 15px;
+            animation: slideDown 0.3s ease-out;
+            width: 100%;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-
-        .course-card:hover .course-fees,
-        .course-card.active .course-fees {
+        .course-fees.active {
             display: block;
-            opacity: 1;
-            pointer-events: auto;
+        }
+
+        .course-card.active {
+            background: var(--bg-secondary) !important;
+            border-color: var(--primary);
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+            min-height: auto;
+            padding: 15px;
+        }
+
+        .course-card.active .course-name {
+            color: var(--primary);
+            font-weight: 800;
         }
 
         .fee-item {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
             padding: 8px 0;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            font-size: 0.85rem;
+            text-align: center;
         }
 
         .fee-item:last-child {
@@ -390,11 +375,25 @@
         .fee-quota {
             font-weight: 600;
             color: var(--text-secondary);
+            font-size: 0.75rem;
+            margin-bottom: 4px;
         }
 
         .fee-amount {
             font-weight: 700;
             color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Course Color Coding */
@@ -537,6 +536,11 @@
                 font-size: 0.85rem;
             }
 
+            .course-card.active {
+                min-height: auto;
+                padding: 12px 8px;
+            }
+
             .course-name {
                 font-size: 0.8rem;
                 margin-bottom: 4px;
@@ -565,6 +569,20 @@
                 padding: 10px 12px;
                 font-size: 0.9rem;
             }
+
+            .fee-item {
+                padding: 6px 0;
+                text-align: center;
+            }
+
+            .fee-quota {
+                font-size: 0.65rem;
+                margin-bottom: 2px;
+            }
+
+            .fee-amount {
+                font-size: 0.7rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -576,6 +594,10 @@
             .course-card {
                 min-height: 45px;
                 padding: 6px 3px;
+            }
+
+            .course-card.active {
+                padding: 10px 6px;
             }
 
             .course-name {
@@ -595,9 +617,18 @@
                 padding: 10px;
             }
 
-            .course-fees {
-                min-width: 180px;
-                padding: 10px;
+            .fee-item {
+                padding: 5px 0;
+                text-align: center;
+            }
+
+            .fee-quota {
+                font-size: 0.6rem;
+                margin-bottom: 2px;
+            }
+
+            .fee-amount {
+                font-size: 0.65rem;
             }
         }
     </style>
@@ -612,7 +643,6 @@
             <h1 class="college-name">SANJAY MEMORIAL POLYTECHNIC</h1>
             <h2 class="admission-title">ಪ್ರವೇಶ ಪ್ರಕಟಣೆ</h2>
             <h3 class="academic-year">ಡಿಪ್ಲೋಮಾ ಕೋರ್ಸ್ 2025-26</h3>
-            <div class="date-badge">ದಿನಾಂಕ: 18.06.2025</div>
         </header>
 
         <div class="main-content">
@@ -661,7 +691,7 @@
             <div class="card">
                 <div class="section-title">
                     <i class="fas fa-rupee-sign"></i>
-                    ಶುಲ್ಕ ರಚನೆ
+                    ಶುಲ್ಕ ವಿವರ
                 </div>
                 <div class="fee-grid">
                     <div class="year-section">
@@ -747,6 +777,11 @@
                     <i class="fas fa-info-circle" style="color: var(--warning); margin-right: 8px;"></i>
                     <strong>ಮೇಲಿನ ಶುಲ್ಕದೊಂದಿಗೆ ₹20 ಪ್ರವೇಶ ಅರ್ಜಿ ಶುಲ್ಕವನ್ನು ಪಾವತಿಸಬೇಕು</strong>
                 </p>
+                
+                <p style="margin-top: 20px; padding: 15px; background: rgba(6, 214, 160, 0.1); border-radius: 12px; border-left: 4px solid var(--accent); font-weight: 500; color: var(--text-secondary);">
+                    <i class="fas fa-phone" style="color: var(--accent); margin-right: 8px;"></i>
+                    <strong>Note:</strong> Contact the office to verify and confirm the accurate dates & fee details related to your course.
+                </p>
             </div>
 
             <!-- Important Notice -->
@@ -798,9 +833,9 @@
         };
 
         const quotaNames = {
-            government: "ಸರ್ಕಾರಿ ಕೋಟಾ",
-            management: "ಆಡಳಿತ ಕೋಟಾ",
-            snq: "SNQ ಕೋಟಾ"
+            government: "Regular",
+            management: "Regular",
+            snq: "SNQ"
         };
 
         const courseNames = {
@@ -837,48 +872,34 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const courseCards = document.querySelectorAll('.course-card');
+            let activeCard = null;
 
-            // Populate fee details for all cards and add click functionality
             courseCards.forEach(card => {
-                const year = card.getAttribute('data-year');
-                const course = card.getAttribute('data-course');
-                const feeContainer = card.querySelector('.course-fees');
-                
-                // Pre-populate fee details
-                if (feeContainer) {
-                    feeContainer.innerHTML = generateFeeDetails(year, course);
-                }
-
-                // Add click functionality for mobile/touch devices
-                card.addEventListener('click', function(e) {
-                    e.preventDefault();
+                card.addEventListener('click', function() {
+                    const year = this.getAttribute('data-year');
+                    const course = this.getAttribute('data-course');
+                    const feeContainer = this.querySelector('.course-fees');
                     
-                    // Close other active cards
-                    courseCards.forEach(otherCard => {
-                        if (otherCard !== this) {
-                            otherCard.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle current card
-                    this.classList.toggle('active');
-                });
-
-                // Add mouse enter/leave for desktop hover
-                card.addEventListener('mouseenter', function() {
-                    if (feeContainer && !feeContainer.innerHTML.trim()) {
-                        feeContainer.innerHTML = generateFeeDetails(year, course);
+                    // If clicking the same card, toggle it
+                    if (activeCard === this) {
+                        this.classList.remove('active');
+                        feeContainer.classList.remove('active');
+                        activeCard = null;
+                        return;
                     }
-                });
-            });
 
-            // Close active cards when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.course-card')) {
-                    courseCards.forEach(card => {
-                        card.classList.remove('active');
-                    });
-                }
+                    // Hide previously active card
+                    if (activeCard) {
+                        activeCard.classList.remove('active');
+                        activeCard.querySelector('.course-fees').classList.remove('active');
+                    }
+
+                    // Show current card
+                    this.classList.add('active');
+                    feeContainer.innerHTML = generateFeeDetails(year, course);
+                    feeContainer.classList.add('active');
+                    activeCard = this;
+                });
             });
 
             // Add smooth scroll behavior for mobile
