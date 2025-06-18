@@ -265,26 +265,11 @@
             padding: 20px;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
-            position: relative;
         }
 
         .year-section:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
-        }
-
-        /* Mobile scroll indicator */
-        @media (max-width: 768px) {
-            .year-section::after {
-                content: '← Swipe to see more courses →';
-                position: absolute;
-                bottom: 5px;
-                right: 10px;
-                font-size: 0.7rem;
-                color: var(--text-light);
-                pointer-events: none;
-                opacity: 0.7;
-            }
         }
 
         .year-title {
@@ -303,39 +288,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 10px;
-        }
-
-        /* Mobile horizontal scrolling override */
-        @media (max-width: 768px) {
-            .course-grid {
-                display: flex !important;
-                grid-template-columns: none !important;
-                overflow-x: auto;
-                overflow-y: hidden;
-                gap: 15px;
-                padding: 10px 5px 15px 5px;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: thin;
-                scrollbar-color: var(--primary-light) rgba(0, 0, 0, 0.1);
-            }
-
-            .course-grid::-webkit-scrollbar {
-                height: 8px;
-            }
-
-            .course-grid::-webkit-scrollbar-track {
-                background: rgba(0, 0, 0, 0.1);
-                border-radius: 4px;
-            }
-
-            .course-grid::-webkit-scrollbar-thumb {
-                background: var(--primary-light);
-                border-radius: 4px;
-            }
-
-            .course-grid::-webkit-scrollbar-thumb:hover {
-                background: var(--primary);
-            }
         }
 
         .course-card {
@@ -375,6 +327,11 @@
             box-shadow: var(--shadow-md);
         }
 
+        .course-card.clicked {
+            transform: scale(0.95);
+            transition: transform 0.1s ease;
+        }
+
         .course-name {
             font-weight: 700;
             color: var(--text-primary);
@@ -382,55 +339,95 @@
             font-size: 0.95rem;
         }
 
-        .course-fees {
-            display: none;
-            margin-top: 15px;
-            animation: slideDown 0.3s ease-out;
-            width: 100%;
-        }
-
-        .course-fees.active {
-            display: block;
-        }
-
-        .course-card.active {
-            background: var(--bg-secondary) !important;
-            border-color: var(--primary);
-            transform: scale(1.02);
+        /* Fee Display Modal */
+        .fee-display-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 25px;
             box-shadow: var(--shadow-lg);
-            min-height: auto;
-            padding: 15px;
+            z-index: 1000;
+            border: 2px solid var(--primary);
+            min-width: 280px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
         }
 
-        .course-card.active .course-name {
-            color: var(--primary);
-            font-weight: 800;
+        .fee-display-modal.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
         }
 
-        .fee-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        .fee-modal-header {
             text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
         }
 
-        .fee-item:last-child {
-            border-bottom: none;
-        }
-
-        .fee-quota {
-            font-weight: 600;
-            color: var(--text-secondary);
-            font-size: 0.75rem;
-            margin-bottom: 4px;
-        }
-
-        .fee-amount {
+        .fee-modal-title {
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--primary);
-            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .fee-modal-course {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .fee-modal-content {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .fee-modal-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .fee-modal-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .fee-modal-amount {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.1rem;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .fee-display-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fee-display-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         @keyframes slideDown {
@@ -584,11 +581,6 @@
                 font-size: 0.85rem;
             }
 
-            .course-card.active {
-                min-height: auto;
-                padding: 12px 8px;
-            }
-
             .course-name {
                 font-size: 0.8rem;
                 margin-bottom: 4px;
@@ -618,18 +610,25 @@
                 font-size: 0.9rem;
             }
 
-            .fee-item {
-                padding: 6px 0;
-                text-align: center;
+            .fee-display-modal {
+                min-width: 250px;
+                padding: 20px;
             }
 
-            .fee-quota {
-                font-size: 0.65rem;
-                margin-bottom: 2px;
+            .fee-modal-title {
+                font-size: 1.1rem;
             }
 
-            .fee-amount {
-                font-size: 0.7rem;
+            .fee-modal-course {
+                font-size: 0.8rem;
+            }
+
+            .fee-modal-content {
+                gap: 15px;
+            }
+
+            .fee-modal-amount {
+                font-size: 1rem;
             }
         }
 
@@ -642,10 +641,6 @@
             .course-card {
                 min-height: 45px;
                 padding: 6px 3px;
-            }
-
-            .course-card.active {
-                padding: 10px 6px;
             }
 
             .course-name {
@@ -665,18 +660,20 @@
                 padding: 10px;
             }
 
-            .fee-item {
-                padding: 5px 0;
-                text-align: center;
+            .fee-display-modal {
+                min-width: 220px;
+                padding: 18px;
             }
 
-            .fee-quota {
-                font-size: 0.6rem;
-                margin-bottom: 2px;
+            .fee-modal-content {
+                flex-direction: column;
+                gap: 10px;
             }
 
-            .fee-amount {
-                font-size: 0.65rem;
+            .fee-modal-item {
+                padding: 8px;
+                background: rgba(102, 126, 234, 0.05);
+                border-radius: 8px;
             }
         }
     </style>
@@ -747,23 +744,18 @@
                         <div class="course-grid">
                             <div class="course-card ce" data-year="1" data-course="ce">
                                 <div class="course-name">CE</div>
-                                <div class="course-fees"></div>
                             </div>
                             <div class="course-card me" data-year="1" data-course="me">
                                 <div class="course-name">ME</div>
-                                <div class="course-fees"></div>
                             </div>
                             <div class="course-card ec" data-year="1" data-course="ec">
                                 <div class="course-name">EC</div>
-                                <div class="course-fees"></div>
                             </div>
                             <div class="course-card cs" data-year="1" data-course="cs">
                                 <div class="course-name">CS</div>
-                                <div class="course-fees"></div>
                             </div>
                             <div class="course-card ee" data-year="1" data-course="ee">
                                 <div class="course-name">EE</div>
-                                <div class="course-fees"></div>
                             </div>
                         </div>
                     </div>
@@ -799,23 +791,18 @@
                         <div class="course-grid">
                             <div class="course-card ce" data-year="3" data-course="ce">
                                 <div class="course-name">CE</div>
-                                <div class="course-fees"></div>
                             </div>
                             <div class="course-card me" data-year="3" data-course="me">
                                 <div class="course-name">ME</div>
-                                <div class="course-fees"></div>
                             </div>
                             <div class="course-card ec" data-year="3" data-course="ec">
                                 <div class="course-name">EC</div>
-                                <div class="course-fees"></div>
                             </div>
                             <div class="course-card cs" data-year="3" data-course="cs">
                                 <div class="course-name">CS</div>
-                                <div class="course-fees"></div>
                             </div>
                             <div class="course-card ee" data-year="3" data-course="ee">
                                 <div class="course-name">EE</div>
-                                <div class="course-fees"></div>
                             </div>
                         </div>
                     </div>
@@ -852,6 +839,16 @@
         <footer class="footer">
             <p><i class="fas fa-graduation-cap"></i> © 2025 Sanjay Memorial Polytechnic - ಪ್ರವೇಶ ಪೋರ್ಟಲ್</p>
         </footer>
+    </div>
+
+    <!-- Fee Display Modal -->
+    <div class="fee-display-overlay" id="feeOverlay"></div>
+    <div class="fee-display-modal" id="feeModal">
+        <div class="fee-modal-header">
+            <div class="fee-modal-title" id="modalTitle"></div>
+            <div class="fee-modal-course" id="modalCourse"></div>
+        </div>
+        <div class="fee-modal-content" id="modalContent"></div>
     </div>
 
     <script>
@@ -902,15 +899,15 @@
             }).format(amount);
         }
 
-        function generateFeeDetails(year, course) {
+        function generateModalFeeDetails(year, course) {
             const fees = feeStructure[year][course];
             let html = '';
             
             Object.entries(fees).forEach(([quota, amount]) => {
                 html += `
-                    <div class="fee-item">
-                        <span class="fee-quota">${quotaNames[quota]}</span>
-                        <span class="fee-amount">${formatCurrency(amount)}</span>
+                    <div class="fee-modal-item">
+                        <div class="fee-modal-label">${quotaNames[quota]}</div>
+                        <div class="fee-modal-amount">${formatCurrency(amount)}</div>
                     </div>
                 `;
             });
@@ -918,36 +915,59 @@
             return html;
         }
 
+        function showFeeModal(year, course) {
+            const modal = document.getElementById('feeModal');
+            const overlay = document.getElementById('feeOverlay');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalCourse = document.getElementById('modalCourse');
+            const modalContent = document.getElementById('modalContent');
+            
+            // Set modal content
+            modalTitle.textContent = `Year ${year} Fee Details`;
+            modalCourse.textContent = `${courseNames[course]} (${course.toUpperCase()})`;
+            modalContent.innerHTML = generateModalFeeDetails(year, course);
+            
+            // Show modal
+            overlay.classList.add('active');
+            modal.classList.add('active');
+            
+            // Auto-hide after 3 seconds
+            setTimeout(() => {
+                hideFeeModal();
+            }, 3000);
+        }
+
+        function hideFeeModal() {
+            const modal = document.getElementById('feeModal');
+            const overlay = document.getElementById('feeOverlay');
+            
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const courseCards = document.querySelectorAll('.course-card');
-            let activeCard = null;
+            const overlay = document.getElementById('feeOverlay');
 
             courseCards.forEach(card => {
                 card.addEventListener('click', function() {
                     const year = this.getAttribute('data-year');
                     const course = this.getAttribute('data-course');
-                    const feeContainer = this.querySelector('.course-fees');
                     
-                    // If clicking the same card, toggle it
-                    if (activeCard === this) {
-                        this.classList.remove('active');
-                        feeContainer.classList.remove('active');
-                        activeCard = null;
-                        return;
-                    }
-
-                    // Hide previously active card
-                    if (activeCard) {
-                        activeCard.classList.remove('active');
-                        activeCard.querySelector('.course-fees').classList.remove('active');
-                    }
-
-                    // Show current card
-                    this.classList.add('active');
-                    feeContainer.innerHTML = generateFeeDetails(year, course);
-                    feeContainer.classList.add('active');
-                    activeCard = this;
+                    // Add click animation
+                    this.classList.add('clicked');
+                    setTimeout(() => {
+                        this.classList.remove('clicked');
+                    }, 150);
+                    
+                    // Show fee modal
+                    showFeeModal(year, course);
                 });
+            });
+
+            // Close modal when clicking overlay
+            overlay.addEventListener('click', function() {
+                hideFeeModal();
             });
 
             // Add smooth scroll behavior for mobile
