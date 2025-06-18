@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ಪ್ರವೇಶ ಪೋರ್ಟಲ್ 2025-26 | Sanjay Memorial Polytechnic</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #667eea;
+            --primary-light: #764ba2;
+            --secondary: #f093fb;
+            --accent: #06d6a0;
+            --warning: #ffd60a;
+            --danger: #ef476f;
+            --success: #06ffa5;
+            --text-primary: #1a1a2e;
+            --text-secondary: #6c757d;
+            --text-light: #8b8fa3;
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.25);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Kannada', 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: var(--shadow-md);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo-container i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .college-name {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .admission-title {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .academic-year {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--danger));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: var(--shadow-md);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: var(--shadow-md); }
+            to { box-shadow: 0 8px 32px rgba(240, 147, 251, 0.4); }
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            gap: 30px;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        /* Timeline */
+        .timeline-container {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 12px 0;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px var(--bg-secondary);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 3px var(--bg-secondary), 0 0 0 6px transparent;
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 0 0 3px var(--bg-secondary), 0 0 0 6px rgba(6, 214, 160, 0.3);
+            }
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 4px;
+            animation: glow-text 3s ease-in-out infinite;
+        }
+
+        @keyframes glow-text {
+            0%, 100% { 
+                text-shadow: 0 0 5px transparent;
+            }
+            50% { 
+                text-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+            }
+        }
+
+        .timeline-content {
+            background: rgba(102, 126, 234, 0.08);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Fee Structure */
+        .fee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .year-section {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .year-section:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .year-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+            padding: 12px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 10px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+        }
+
+        .course-card {
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .course-card:hover::before {
+            left: 100%;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            z-index: 20;
+            position: relative;
+        }
+
+        .course-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .course-fees {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 30;
+            min-width: 200px;
+            border: 2px solid var(--primary);
+            animation: slideUp 0.3s ease-out;
+            margin-top: 5px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .course-card:hover .course-fees,
+        .course-card.active .course-fees {
+            display: block;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.85rem;
+        }
+
+        .fee-item:last-child {
+            border-bottom: none;
+        }
+
+        .fee-quota {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .fee-amount {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Course Color Coding */
+        .course-card.ce { 
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border-left: 4px solid #10b981;
+        }
+        .course-card.me { 
+            background: linear-gradient(135deg, #fef2f2, #fecaca);
+            border-left: 4px solid #ef4444;
+        }
+        .course-card.ec { 
+            background: linear-gradient(135deg, #faf5ff, #e9d5ff);
+            border-left: 4px solid #8b5cf6;
+        }
+        .course-card.cs { 
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+        }
+        .course-card.ee { 
+            background: linear-gradient(135deg, #fff7ed, #fed7aa);
+            border-left: 4px solid #f97316;
+        }
+
+        /* Important Notice */
+        .notice-card {
+            background: linear-gradient(135deg, rgba(255, 214, 10, 0.1), rgba(239, 71, 111, 0.1));
+            border: 2px solid var(--warning);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 30px;
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .notice-title {
+            color: var(--danger);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .notice-title i {
+            animation: shake 1s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
+        }
+
+        .notice-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .notice-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 214, 10, 0.2);
+            font-weight: 500;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .notice-list li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .notice-list li:last-child {
+            border-bottom: none;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--warning), #f59e0b);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 30px 15px;
+                margin-bottom: 30px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .fee-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 8px;
+            }
+
+            .course-card {
+                min-height: 50px;
+                padding: 8px 4px;
+                font-size: 0.85rem;
+            }
+
+            .course-name {
+                font-size: 0.8rem;
+                margin-bottom: 4px;
+            }
+
+            .timeline-container {
+                padding-left: 25px;
+            }
+
+            .timeline-item {
+                padding: 15px 0;
+                margin-bottom: 10px;
+            }
+
+            .timeline-item::before {
+                left: -18px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .timeline-date {
+                font-size: 0.9rem;
+            }
+
+            .timeline-content {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .course-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 6px;
+            }
+
+            .course-card {
+                min-height: 45px;
+                padding: 6px 3px;
+            }
+
+            .course-name {
+                font-size: 0.75rem;
+            }
+
+            .notice-card {
+                padding: 20px;
+            }
+
+            .year-section {
+                padding: 15px;
+            }
+
+            .year-title {
+                font-size: 1.1rem;
+                padding: 10px;
+            }
+
+            .course-fees {
+                min-width: 180px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo-container">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1 class="college-name">SANJAY MEMORIAL POLYTECHNIC</h1>
+            <h2 class="admission-title">ಪ್ರವೇಶ ಪ್ರಕಟಣೆ</h2>
+            <h3 class="academic-year">ಡಿಪ್ಲೋಮಾ ಕೋರ್ಸ್ 2025-26</h3>
+            <div class="date-badge">ದಿನಾಂಕ: 18.06.2025</div>
+        </header>
+
+        <div class="main-content">
+            <!-- Admission Information -->
+            <div class="card">
+                <div class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    ಪ್ರವೇಶ ಮಾಹಿತಿ
+                </div>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-primary); background: rgba(102, 126, 234, 0.05); padding: 20px; border-radius: 12px; border-left: 4px solid var(--primary);">
+                    <strong>ಈ ಮೂಲಕ ಎಲ್ಲಾ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಸೂಚಿಸುವುದೇನೆಂದರೆ 2025-26ನೇ ಸಾಲಿನ 
+                    ದ್ವಿತೀಯ ಹಾಗೂ ತೃತೀಯ ವರ್ಷದ (3rd & 5th Semesters) ಡಿಪ್ಲೋಮಾ 
+                    ಪ್ರವೇಶವನ್ನು ದಿನಾಂಕ: <span class="highlight">19-06-2025</span> ರಿಂದ ಪ್ರಾರಂಭಿಸಲಾಗುವುದು.</strong> 
+                    ತಾಂತ್ರಿಕ ಶಿಕ್ಷಣ ಇಲಾಖೆಯ ನಿದೇಶನದಂತೆ ದಿನಾಂಕ: <span class="highlight">30.06.2025</span> 
+                    ರವರಗೆ ಯಾವುದೇ ದಂಡ ಶುಲ್ಕವಿಲ್ಲದೆ ಪ್ರವೇಶವನ್ನು ಮಾಡಿಕೊಳ್ಳಲಾಗುವುದು.
+                </p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="card">
+                <div class="section-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    ಪ್ರವೇಶ ವೇಳಾಪಟ್ಟಿ
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-date">19-06-2025 ರಿಂದ 30-06-2025</div>
+                        <div class="timeline-content">ದಂಡ ರಹಿತ ಪ್ರವೇಶ</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">01-07-2025 ರಿಂದ 10-07-2025</div>
+                        <div class="timeline-content">ದಂಡ ಶುಲ್ಕ: ₹200.00</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">11-07-2025 ರಿಂದ 21-07-2025</div>
+                        <div class="timeline-content">ದಂಡ ಶುಲ್ಕ: ₹400.00</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">22-07-2025 ರಿಂದ 31-07-2025</div>
+                        <div class="timeline-content">ದಂಡ ಶುಲ್ಕ: ₹1000.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fee Structure -->
+            <div class="card">
+                <div class="section-title">
+                    <i class="fas fa-rupee-sign"></i>
+                    ಶುಲ್ಕ ರಚನೆ
+                </div>
+                <div class="fee-grid">
+                    <div class="year-section">
+                        <div class="year-title">ಪ್ರಥಮ ವರ್ಷ</div>
+                        <div class="course-grid">
+                            <div class="course-card ce" data-year="1" data-course="ce">
+                                <div class="course-name">CE</div>
+                                <div class="course-fees"></div>
+                            </div>
+                            <div class="course-card me" data-year="1" data-course="me">
+                                <div class="course-name">ME</div>
+                                <div class="course-fees"></div>
+                            </div>
+                            <div class="course-card ec" data-year="1" data-course="ec">
+                                <div class="course-name">EC</div>
+                                <div class="course-fees"></div>
+                            </div>
+                            <div class="course-card cs" data-year="1" data-course="cs">
+                                <div class="course-name">CS</div>
+                                <div class="course-fees"></div>
+                            </div>
+                            <div class="course-card ee" data-year="1" data-course="ee">
+                                <div class="course-name">EE</div>
+                                <div class="course-fees"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-title">ದ್ವಿತೀಯ ವರ್ಷ</div>
+                        <div class="course-grid">
+                            <div class="course-card ce" data-year="2" data-course="ce">
+                                <div class="course-name">CE</div>
+                                <div class="course-fees" id="fees-2-ce"></div>
+                            </div>
+                            <div class="course-card me" data-year="2" data-course="me">
+                                <div class="course-name">ME</div>
+                                <div class="course-fees" id="fees-2-me"></div>
+                            </div>
+                            <div class="course-card ec" data-year="2" data-course="ec">
+                                <div class="course-name">EC</div>
+                                <div class="course-fees" id="fees-2-ec"></div>
+                            </div>
+                            <div class="course-card cs" data-year="2" data-course="cs">
+                                <div class="course-name">CS</div>
+                                <div class="course-fees" id="fees-2-cs"></div>
+                            </div>
+                            <div class="course-card ee" data-year="2" data-course="ee">
+                                <div class="course-name">EE</div>
+                                <div class="course-fees" id="fees-2-ee"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="year-section">
+                        <div class="year-title">ತೃತೀಯ ವರ್ಷ</div>
+                        <div class="course-grid">
+                            <div class="course-card ce" data-year="3" data-course="ce">
+                                <div class="course-name">CE</div>
+                                <div class="course-fees"></div>
+                            </div>
+                            <div class="course-card me" data-year="3" data-course="me">
+                                <div class="course-name">ME</div>
+                                <div class="course-fees"></div>
+                            </div>
+                            <div class="course-card ec" data-year="3" data-course="ec">
+                                <div class="course-name">EC</div>
+                                <div class="course-fees"></div>
+                            </div>
+                            <div class="course-card cs" data-year="3" data-course="cs">
+                                <div class="course-name">CS</div>
+                                <div class="course-fees"></div>
+                            </div>
+                            <div class="course-card ee" data-year="3" data-course="ee">
+                                <div class="course-name">EE</div>
+                                <div class="course-fees"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 25px; padding: 15px; background: rgba(255, 214, 10, 0.1); border-radius: 12px; border-left: 4px solid var(--warning); font-weight: 600;">
+                    <i class="fas fa-info-circle" style="color: var(--warning); margin-right: 8px;"></i>
+                    <strong>ಮೇಲಿನ ಶುಲ್ಕದೊಂದಿಗೆ ₹20 ಪ್ರವೇಶ ಅರ್ಜಿ ಶುಲ್ಕವನ್ನು ಪಾವತಿಸಬೇಕು</strong>
+                </p>
+            </div>
+
+            <!-- Important Notice -->
+            <div class="notice-card">
+                <div class="notice-title">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    ಮಹತ್ವದ ಸೂಚನೆಗಳು
+                </div>
+                <ul class="notice-list">
+                    <li>ರಿಪೀಟರ್ಸ್ ಪ್ರವೇಶಕ್ಕೆ ಅಂತಿಮ ದಿನಾಂಕ: <span class="highlight">30-06-2025</span> (ದಂಡ ಶುಲ್ಕವಿಲ್ಲದೆ)</li>
+                    <li>ವರ್ಗಾವಣೆ ಪಡೆಯುವ ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ಅಂತಿಮ ದಿನಾಂಕ: <span class="highlight">21-07-2025</span></li>
+                    <li>ಕೋರ್ಸ್ ಬದಲಾವಣೆಗೆ ಅಂತಿಮ ದಿನಾಂಕ: <span class="highlight">10-07-2025</span></li>
+                    <li><strong>ಫೀ ಶುಲ್ಕ ಸಂಗ್ರಹಣೆ ಸಮಯ:</strong> ಬೆಳಿಗ್ಗೆ 10.30 ರಿಂದ ಮಧ್ಯಾಹ್ನ 1.00 ಗಂಟೆ ವರಗೆ</li>
+                    <li><strong>ಶನಿವಾರ:</strong> ಬೆಳಿಗ್ಗೆ 10.30 ರಿಂದ 12.30 ವರಗೆ ಮಾತ್ರ</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><i class="fas fa-graduation-cap"></i> © 2025 Sanjay Memorial Polytechnic - ಪ್ರವೇಶ ಪೋರ್ಟಲ್</p>
+        </footer>
+    </div>
+
+    <script>
+        // Fee structure data
+        const feeStructure = {
+            1: {
+                ce: { government: 11988, snq: 7220 },
+                me: { government: 11988, snq: 7220 },
+                ec: { government: 11988, snq: 7220 },
+                cs: { government: 11988, snq: 7220 },
+                ee: { management: 18445, snq: 7220 }
+            },
+            2: {
+                ce: { government: 12838, snq: 7220 },
+                me: { government: 12838, snq: 7220 },
+                ec: { government: 12838, snq: 7220 },
+                cs: { government: 12838, snq: 7220 },
+                ee: { management: 19295, snq: 7220 }
+            },
+            3: {
+                ce: { government: 12838, snq: 7220 },
+                me: { government: 12838, snq: 7220 },
+                ec: { government: 12838, snq: 7220 },
+                cs: { government: 12838, snq: 7220 },
+                ee: { management: 19295, snq: 7220 }
+            }
+        };
+
+        const quotaNames = {
+            government: "ಸರ್ಕಾರಿ ಕೋಟಾ",
+            management: "ಆಡಳಿತ ಕೋಟಾ",
+            snq: "SNQ ಕೋಟಾ"
+        };
+
+        const courseNames = {
+            ce: "Civil Engineering",
+            me: "Mechanical Engineering",
+            ec: "Electronics & Communication",
+            cs: "Computer Science",
+            ee: "Electrical & Electronics"
+        };
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        function generateFeeDetails(year, course) {
+            const fees = feeStructure[year][course];
+            let html = '';
+            
+            Object.entries(fees).forEach(([quota, amount]) => {
+                html += `
+                    <div class="fee-item">
+                        <span class="fee-quota">${quotaNames[quota]}</span>
+                        <span class="fee-amount">${formatCurrency(amount)}</span>
+                    </div>
+                `;
+            });
+            
+            return html;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const courseCards = document.querySelectorAll('.course-card');
+
+            // Populate fee details for all cards and add click functionality
+            courseCards.forEach(card => {
+                const year = card.getAttribute('data-year');
+                const course = card.getAttribute('data-course');
+                const feeContainer = card.querySelector('.course-fees');
+                
+                // Pre-populate fee details
+                if (feeContainer) {
+                    feeContainer.innerHTML = generateFeeDetails(year, course);
+                }
+
+                // Add click functionality for mobile/touch devices
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close other active cards
+                    courseCards.forEach(otherCard => {
+                        if (otherCard !== this) {
+                            otherCard.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current card
+                    this.classList.toggle('active');
+                });
+
+                // Add mouse enter/leave for desktop hover
+                card.addEventListener('mouseenter', function() {
+                    if (feeContainer && !feeContainer.innerHTML.trim()) {
+                        feeContainer.innerHTML = generateFeeDetails(year, course);
+                    }
+                });
+            });
+
+            // Close active cards when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.course-card')) {
+                    courseCards.forEach(card => {
+                        card.classList.remove('active');
+                    });
+                }
+            });
+
+            // Add smooth scroll behavior for mobile
+            const feeGrid = document.querySelector('.fee-grid');
+            if (feeGrid) {
+                feeGrid.style.scrollBehavior = 'smooth';
+            }
+
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.card, .year-section, .course-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
